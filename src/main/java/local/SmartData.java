@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="MyPage_table")
-public class MyPage {
+@Table(name="SmartData_table")
+public class SmartData {
 
         @Id
         @GeneratedValue(strategy=GenerationType.AUTO)

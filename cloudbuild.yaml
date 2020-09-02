@@ -95,7 +95,7 @@ steps:
                     failureThreshold: 5
         EOF
 substitutions:
-  _PROJECT_NAME: MyPage
+  _PROJECT_NAME: SmartData
 options:
   env:
     #    # location/name of GKE cluster (used by all kubectl commands)

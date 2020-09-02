@@ -10,9 +10,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableBinding(KafkaProcessor.class)
 @EnableFeignClients
-public class MyPageApplication {
+public class SmartDataApplication {
     protected static ApplicationContext applicationContext;
     public static void main(String[] args) {
-        applicationContext = SpringApplication.run(MyPageApplication.class, args);
+        applicationContext = SpringApplication.run(SmartDataApplication.class, args);
     }
 }

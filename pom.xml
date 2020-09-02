@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>local</groupId>
-	<artifactId>MyPage</artifactId>
+	<artifactId>SmartData</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>MyPage</name>
+	<name>SmartData</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

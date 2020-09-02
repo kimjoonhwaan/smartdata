@@ -6,30 +6,28 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class MyPageViewHandler {
+public class SmartDataViewHandler {
 
 
     @Autowired
-    private MyPageRepository myPageRepository;
+    private SmartDataRepository smartDataRepository;
 
     @StreamListener(KafkaProcessor.INPUT)
     public void whenRequested_then_CREATE_1 (@Payload Requested requested) {
         try {
             if (requested.isMe()) {
                 // view 객체 생성
-                MyPage myPage = new MyPage();
+                SmartData smartData = new SmartData();
                 // view 객체에 이벤트의 Value 를 set 함
-                myPage.setScreeningId(requested.getId());
-                myPage.setCustNm(requested.getCustNm());
-                myPage.setHospitalNm(requested.getHospitalNm());
-                myPage.setStatus(requested.getStatus());
+                smartData.setScreeningId(requested.getId());
+                smartData.setCustNm(requested.getCustNm());
+                smartData.setHospitalNm(requested.getHospitalNm());
+                smartData.setStatus(requested.getStatus());
                 // view 레파지 토리에 save
-                myPageRepository.save(myPage);
+                smartDataRepository.save(smartData);
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -42,12 +40,12 @@ public class MyPageViewHandler {
         try {
             if (canceled.isMe()) {
                 // view 객체 조회
-                List<MyPage> myPageList = myPageRepository.findByScreeningId(canceled.getId());
-                for(MyPage myPage : myPageList){
+                List<SmartData> smartDataList = smartDataRepository.findByScreeningId(canceled.getId());
+                for(SmartData smartData : smartDataList){
                     // view 객체에 이벤트의 eventDirectValue 를 set 함
-                    myPage.setStatus(canceled.getStatus());
+                    smartData.setStatus(canceled.getStatus());
                     // view 레파지 토리에 save
-                    myPageRepository.save(myPage);
+                    smartDataRepository.save(smartData);
                 }
             }
         }catch (Exception e){
@@ -59,12 +57,12 @@ public class MyPageViewHandler {
         try {
             if (forceCanceled.isMe()) {
                 // view 객체 조회
-                List<MyPage> myPageList = myPageRepository.findByScreeningId(forceCanceled.getId());
-                for(MyPage myPage : myPageList){
+                List<SmartData> smartDataList = smartDataRepository.findByScreeningId(forceCanceled.getId());
+                for(SmartData smartData : smartDataList){
                     // view 객체에 이벤트의 eventDirectValue 를 set 함
-                    myPage.setStatus(forceCanceled.getStatus());
+                    smartData.setStatus(forceCanceled.getStatus());
                     // view 레파지 토리에 save
-                    myPageRepository.save(myPage);
+                    smartDataRepository.save(smartData);
                 }
             }
         }catch (Exception e){
@@ -76,12 +74,12 @@ public class MyPageViewHandler {
         try {
             if (reservationCompleted.isMe()) {
                 // view 객체 조회
-                List<MyPage> myPageList = myPageRepository.findByScreeningId(reservationCompleted.getScreeningId());
-                for (MyPage myPage : myPageList) {
+                List<SmartData> smartDataList = smartDataRepository.findByScreeningId(reservationCompleted.getScreeningId());
+                for (SmartData smartData : smartDataList) {
                     // view 객체에 이벤트의 eventDirectValue 를 set 함
-                    myPage.setStatus(reservationCompleted.getStatus());
+                    smartData.setStatus(reservationCompleted.getStatus());
                     // view 레파지 토리에 save
-                    myPageRepository.save(myPage);
+                    smartDataRepository.save(smartData);
                 }
             }
         } catch (Exception e) {
