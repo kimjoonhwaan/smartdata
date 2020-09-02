@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    _PROJECT_NAME: "mypage"
+    _PROJECT_NAME: "user19-mypage"
     _NAMESPACE: "skcc-ns"
     _AWS_REGION: "us-east-2"
 
