@@ -38,7 +38,7 @@ spring:
                   serde: org.apache.kafka.common.serialization.Serdes$StringSerde
       bindings:
         event-in:
-          group: smartdata
+          group: SmartData
           destination: local
           contentType: application/json
         event-out:
@@ -70,7 +70,7 @@ spring:
                   serde: org.apache.kafka.common.serialization.Serdes$StringSerde
       bindings:
         event-in:
-          group: smartdata
+          group: SmartData
           destination: local
           contentType: application/json
         event-out:
