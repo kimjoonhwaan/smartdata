@@ -25,27 +25,6 @@ public class Hospital {
 
     }
 
-    @PostUpdate
-    public void onPostUpdate(){
-        HospitalChanged hospitalChanged = new HospitalChanged();
-        BeanUtils.copyProperties(this, hospitalChanged);
-        hospitalChanged.publishAfterCommit();
-
-        PCntChanged pCntChanged = new PCntChanged();
-        BeanUtils.copyProperties(this, pCntChanged);
-        pCntChanged.publishAfterCommit();
-
-    }
-
-    @PreRemove
-    public void onPreRemove(){
-        Deleted deleted = new Deleted();
-        BeanUtils.copyProperties(this, deleted);
-        deleted.publishAfterCommit();
-
-
-    }
-
 
     public Long getId() {
         return id;
